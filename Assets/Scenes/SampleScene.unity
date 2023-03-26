@@ -451,11 +451,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _horizontalSpeed: 8
   _faceRight: 1
-  _verticalSpeed: 0
-  _minSize: 0
-  _maxSize: 0
-  _minVericalPosition: 0
-  _maxVericalPosition: 0
+  _verticalSpeed: 4
+  _minSize: 0.52
+  _maxSize: 0.6
+  _minVericalPosition: -3.3
+  _maxVericalPosition: -2.8
 --- !u!50 &313279109
 Rigidbody2D:
   serializedVersion: 4
@@ -1515,7 +1515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2364307010229973598, guid: dde2588f5e0bc7b4ab407c1ae99bd5c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.06
+      value: -3.34
       objectReference: {fileID: 0}
     - target: {fileID: -2364307010229973598, guid: dde2588f5e0bc7b4ab407c1ae99bd5c1, type: 3}
       propertyPath: m_LocalPosition.z

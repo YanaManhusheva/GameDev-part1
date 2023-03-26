@@ -15,7 +15,10 @@ namespace Assets.Scripts
         {
             _horizontalDirection = Input.GetAxisRaw("Horizontal");
             _verticalDirection = Input.GetAxisRaw("Vertical");
-            
+
+
+            if (Input.GetButtonDown("Jump"))
+                _playerEntity.Jump();
         }
         private void FixedUpdate()
         {
