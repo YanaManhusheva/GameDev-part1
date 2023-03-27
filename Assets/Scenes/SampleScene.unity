@@ -449,13 +449,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7994f5551da2dd948b405224dccb4b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalSpeed: 8
+  _horizontalSpeed: 7
   _faceRight: 1
-  _verticalSpeed: 4
+  _verticalSpeed: 3
   _minSize: 0.52
   _maxSize: 0.6
   _minVericalPosition: -3.3
   _maxVericalPosition: -2.8
+  _jumpForce: 600
+  _gravityScale: 4.5
+  _shadow: {fileID: 2143136425}
+  _shadowSizeModificator: 0.2
+  _shadowAlphaModificator: 0.3
 --- !u!50 &313279109
 Rigidbody2D:
   serializedVersion: 4
@@ -3241,7 +3246,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: c48f0739eb8139d45ae0e0a565a12ff6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.65882355}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6666667}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
