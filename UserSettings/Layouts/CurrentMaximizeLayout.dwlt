@@ -97,18 +97,18 @@ MonoBehaviour:
       y: 21
       width: 993.2001
       height: 378.8
-    m_Scale: {x: 1.755694, y: 1.755694}
-    m_Translation: {x: 496.6001, y: 189.4}
+    m_Scale: {x: 1.2169503, y: 1.2169503}
+    m_Translation: {x: 496.60004, y: 189.4}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -282.85117
-      y: -107.87756
-      width: 565.7023
-      height: 215.75513
+      x: -408.06927
+      y: -155.63495
+      width: 816.13855
+      height: 311.2699
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1241.5001, y: 499.75}
@@ -223,10 +223,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 32}
-      m_SelectedIDs: 065d0000
-      m_LastClickedID: 23814
-      m_ExpandedIDs: a6faffff28fbffff025d0000065d0000905d0000d05d0000
+      scrollPos: {x: 0, y: 272}
+      m_SelectedIDs: 68600000
+      m_LastClickedID: 24680
+      m_ExpandedIDs: 14e7ffff8eecffff14f2ffff0cfbffffb05e0000705f0000ac5f0000b65f0000d25f00005860000068600000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -557,9 +557,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.6876075, y: -0.57848454, z: 0.09702671}
+    m_Target: {x: 7.99269, y: -1.6710875, z: 0.19148053}
     speed: 2
-    m_Value: {x: -3.6876075, y: -0.57848454, z: 0.09702671}
+    m_Value: {x: 7.99269, y: -1.6710875, z: 0.19148053}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -610,9 +610,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3.1597483
+    m_Target: 3.0724359
     speed: 2
-    m_Value: 3.1597483
+    m_Value: 3.0724359
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -705,22 +705,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Player
+    - Assets/Gothicvania-Town/Art/Environment/props-sliced
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Player
+  - Assets/Gothicvania-Town/Art/Environment/props-sliced
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\univer\GameDev\GameDev2023
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5a5f0000
-    m_LastClickedID: 24410
-    m_ExpandedIDs: 00000000445f0000465f0000485f00004a5f0000565f000000ca9a3b
+    scrollPos: {x: 0, y: 239}
+    m_SelectedIDs: 54620000
+    m_LastClickedID: 25172
+    m_ExpandedIDs: 00000000e6610000e8610000ea610000ec610000f2610000f66100001462000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -748,7 +748,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000445f0000465f0000485f00004a5f0000
+    m_ExpandedIDs: 00000000e6610000e8610000ea610000ec610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -773,10 +773,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 065d0000
-    m_LastClickedInstanceID: 23814
+    m_SelectedInstanceIDs: 68600000
+    m_LastClickedInstanceID: 24680
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300005a620000446200006a620000a8830000487f0000987f0000169700002ab1000030b10000
+    m_ExpandedInstanceIDs: c62300005a620000446200006a620000a8830000487f0000987f0000169700002ab1000030b10000a0610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -893,7 +893,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 246.40002
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
