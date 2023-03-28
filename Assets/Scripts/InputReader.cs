@@ -19,6 +19,15 @@ namespace Assets.Scripts
 
             if (Input.GetButtonDown("Jump"))
                 _playerEntity.Jump();
+            
+            if (Input.GetButtonDown("Fire3"))
+                _playerEntity.LookUp();
+
+            if (Input.GetButtonUp("Fire3"))
+                _playerEntity.EndLookUp();
+
+            if (Input.GetButtonDown("Fire1"))
+                _playerEntity.StartAttack();
         }
         private void FixedUpdate()
         {
