@@ -1,3 +1,5 @@
+using Assets.Scripts.Player;
+using Assets.Scripts.Player.PlayerAnimation;
 using Core.Enums;
 using Core.Tools;
 using System;
@@ -10,6 +12,7 @@ namespace Player
 
     public class PlayerEntity : MonoBehaviour
     {
+        [SerializeField] private AnimatorController _animator;
         [Header("HorizintalMovement")]
         [SerializeField] private float _horizontalSpeed;
         [SerializeField] private Direction _direction;
@@ -42,11 +45,9 @@ namespace Player
         private Vector2 _shadowInitialScale;
         private Color _shadowInitialColor;
 
+        private Vector2 _movement;
+       
 
-
-
-
-        // Start is called before the first frame update
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
@@ -65,10 +66,21 @@ namespace Player
         {
             if (_isJumping)
                 UpdateJump();
+
+            UpdateAnimations();
+        }
+
+        private void UpdateAnimations()
+        {
+            _animator.PlayAnimation(AnimationType.Idle, true);
+            _animator.PlayAnimation(AnimationType.Run, _movement.magnitude > 0);
+            _animator.PlayAnimation(AnimationType.Jump, _isJumping);
+         
         }
 
         public void MoveHorizontally(float direction)
         {
+            _movement.x = direction;
             SetDirection(direction);
             Vector2 velocity = _rigidbody.velocity;
             velocity.x = direction * _horizontalSpeed;
@@ -78,6 +90,8 @@ namespace Player
         {
             if (_isJumping)
                 return;
+
+            _movement.y = direction;
             Vector2 velocity = _rigidbody.velocity;
             velocity.y = direction * _verticalSpeed;
             _rigidbody.velocity = velocity;
@@ -146,5 +160,30 @@ namespace Player
             _rigidbody.position = new Vector2(_rigidbody.position.x, _startJumpVericalPosition);
             _rigidbody.gravityScale = 0;
         }
+        
+        public void StartAttack()
+        {
+            if (!_animator.PlayAnimation(AnimationType.Attack, true))
+                return;
+
+            _animator.AnimationEnded += EndAttack;
+            _animator.AnimationRequested += Attack;
+        }
+        private void Attack()
+        {
+
+        }
+         private void EndAttack()
+        {
+            _animator.AnimationEnded -= EndAttack;
+            _animator.AnimationRequested -= Attack;
+            _animator.PlayAnimation(AnimationType.Attack, false);
+        }
+        public void LookUp() => _animator.PlayAnimation(AnimationType.LookUp, true);
+        
+        public void EndLookUp()=> _animator.PlayAnimation(AnimationType.LookUp, false);
+       
+
+
     }
 }
