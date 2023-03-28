@@ -8,23 +8,27 @@ namespace Core.Parallax
     
         private readonly float  _speed;
         private readonly List<Transform> _layers;
-        private readonly float _layerHorizontalSize;
+        private static float _layerHorizontalSize = -1;
 
         public InfiniteParallaxLayer(SpriteRenderer initialPart, float speed, Transform parentTranform)
         {
-          
             _speed = speed;
-            Sprite sprite = initialPart.sprite;
-            _layerHorizontalSize = sprite.texture.width / sprite.pixelsPerUnit;
-
-            _layers = new List<Transform>
+            if (_layerHorizontalSize < 0)
             {
-                initialPart.transform
-            };
+                Sprite sprite = initialPart.sprite;
+                _layerHorizontalSize = initialPart.transform.localScale.x *
+                    (
+                        initialPart.drawMode == SpriteDrawMode.Tiled ?
+                        initialPart.size.x :
+                        sprite.texture.width / sprite.pixelsPerUnit
+                    );
+            }
+            _layers = new List<Transform>
+                {
+                    initialPart.transform
+                };
 
-            Debug.Log(_layers[0].position.x);
-            Debug.Log(_layerHorizontalSize);
-            Vector2 secondPartPosition = (Vector2)_layers[0].position + new Vector2(_layerHorizontalSize, 0);
+            Vector2 secondPartPosition = ((Vector2)_layers[0].position) + new Vector2(_layerHorizontalSize, 0);
             Transform secondPart = Object.Instantiate(initialPart, secondPartPosition, Quaternion.identity).transform;
             secondPart.parent = parentTranform;
             _layers.Add(secondPart);
@@ -53,7 +57,7 @@ namespace Core.Parallax
         {
             Transform activeLayer = _layers.Find(layer => IsLayerActive(layer, targetPosition));
             Transform layerToMove = _layers.Find(layer => !IsLayerActive(layer, targetPosition));
-            if (activeLayer == null || layerToMove == null)
+            if (activeLayer == null ||  layerToMove == null)
                 return;
 
             float relativePosition = activeLayer.position.x;
@@ -62,8 +66,9 @@ namespace Core.Parallax
                 layerToMove.position.x < relativePosition && direction < 0)
                 return;
 
-
-            layerToMove.position = new Vector2(relativePosition + _layerHorizontalSize * direction, 0);
+            Vector2 layerToMoveNewPosition =
+                new(relativePosition + _layerHorizontalSize * direction, layerToMove.position.y);
+            layerToMove.position = layerToMoveNewPosition;
         }
 
         private bool IsLayerActive(Transform layer, float targetPosition) =>
