@@ -1,21 +1,40 @@
-﻿using Player;
+﻿using Assets.Scripts.InputReader;
+using Assets.Scripts.StatsSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
-    public class PlayerSystem
+    public class PlayerSystem : IDisposable
     {
+        private readonly StatsController _statsController;
         private readonly PlayerEntity _playerEntity;
         private readonly PlayerBrain _playerBrain;
+        private readonly List<IDisposable> _disposables;
 
         public PlayerSystem(PlayerEntity playerEntity, List<IEntityInputSource> inputSources)
         {
+            _disposables = new();
+
+            var statStorage = Resources.Load<StatsStorage>($"Player/{nameof(StatsStorage)}");
+            var stats = statStorage.Stats
+                .Select(s => s.Clone() as Stat)
+                .ToList();
+            _statsController = new StatsController(stats);
+            _disposables.Add(_statsController);
+
             _playerEntity = playerEntity;
-            _playerBrain = new PlayerBrain(playerEntity, inputSources);
+            _playerEntity.Initialize(_statsController);
+
+            _playerBrain = new(playerEntity, inputSources);
+            _disposables.Add(_playerBrain);
+        }
+        public void Dispose()
+        {
+            foreach (var disposable in _disposables)
+                disposable.Dispose();
         }
     }
 }

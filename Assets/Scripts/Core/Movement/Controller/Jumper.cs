@@ -1,9 +1,6 @@
 ﻿using Assets.Scripts.Core.Movement.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Assets.Scripts.StatsSystem;
+using Assets.Scripts.StatsSystem.Enums;
 using UnityEngine;
 
 namespace Assets.Scripts.Core.Movement.Controller
@@ -20,17 +17,19 @@ namespace Assets.Scripts.Core.Movement.Controller
         private readonly Vector2 _shadowLocalScale;
         private readonly Color _shadowColor;
 
+        private readonly IStatValueGiver _statValueGiver;
 
         private float _startJumpVerticalPosition;
         private float _shadowVerticalPosition;
         public bool IsJumping { get; private set; }
 
-        public Jumper( Rigidbody2D rigidbody, JumpData jumpData, float maxVerticalSize)
+        public Jumper(Rigidbody2D rigidbody, JumpData jumpData,
+            float maxVerticalSize, IStatValueGiver statValueGiver)
         {
             _jumpData = jumpData;
             _rigidbody = rigidbody;
             _maxVerticalSize = maxVerticalSize;
-  
+            _statValueGiver = statValueGiver;
             _shadowTransform = _jumpData.Shadow.transform;
             _shadowLocalPosition = _shadowTransform.localPosition;
             _shadowLocalScale = _shadowTransform.localScale;
@@ -46,7 +45,7 @@ namespace Assets.Scripts.Core.Movement.Controller
             IsJumping = true;
             _startJumpVerticalPosition = _rigidbody.position.y;
             var jumpModificator = _transform.localScale.y / _maxVerticalSize;
-            var currentJumpForce = _jumpData.JumpForce  * jumpModificator;
+            var currentJumpForce = _statValueGiver.GetStatValue(StatType.JumpForce) * jumpModificator;
             _rigidbody.gravityScale = _jumpData.GravityScale * jumpModificator;
             _rigidbody.AddForce(Vector2.up * currentJumpForce);
             _shadowVerticalPosition = _shadowTransform.position.y;

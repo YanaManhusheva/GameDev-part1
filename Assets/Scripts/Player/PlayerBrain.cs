@@ -1,10 +1,8 @@
 ﻿using Assets.Scripts.Core.Services.Updater;
-using Player;
+using Assets.Scripts.InputReader;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assets.Scripts.Player
 {
@@ -31,7 +29,7 @@ namespace Assets.Scripts.Player
                 _playerEntity.StartAttack();
 
             foreach (var inputSource in _inputSources)
-                inputSource.ResetOneTimeAction();
+                inputSource.ResetOneTimeActions();
         }
         private float GetHorizontalDirection()
         {

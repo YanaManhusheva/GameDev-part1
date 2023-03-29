@@ -1,9 +1,7 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace Assets.Scripts.Player
+namespace Assets.Scripts.InputReader
 {
     public class GameUIInputView : MonoBehaviour, IEntityInputSource
     {
@@ -28,7 +26,7 @@ namespace Assets.Scripts.Player
             _jumpButton.onClick.RemoveAllListeners();
             _attackButton.onClick.RemoveAllListeners();
         }
-        public void ResetOneTimeAction()
+        public void ResetOneTimeActions()
         {
             Jump = false;
             Attack = false;

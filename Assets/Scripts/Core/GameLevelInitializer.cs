@@ -1,18 +1,14 @@
 ﻿using Assets.Scripts.Core.Services.Updater;
+using Assets.Scripts.InputReader;
 using Assets.Scripts.Player;
-using Player;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
     class GameLevelInitializer : MonoBehaviour
     {
-
         [SerializeField] private PlayerEntity _playerEntity;
         [SerializeField] private GameUIInputView _gameUIInputView;
 
@@ -22,17 +18,18 @@ namespace Assets.Scripts.Core
 
         private List<IDisposable> _disposables;
 
-        private bool _onPause ;
-
         private void Awake()
         {
             _disposables = new List<IDisposable>();
+
             if (ProjectUpdater.Instance == null)
             {
                 _projectUpdater = new GameObject().AddComponent<ProjectUpdater>();
             }
             else
+            {
                 _projectUpdater = ProjectUpdater.Instance as ProjectUpdater;
+            }
 
             _externalDevicesInputReader = new ExternalDevicesInputReader();
             _disposables.Add(_externalDevicesInputReader);
@@ -42,7 +39,7 @@ namespace Assets.Scripts.Core
                 _gameUIInputView,
                 _externalDevicesInputReader
             });
-
+            _disposables.Add(_playerSystem);
         }
         private void Update()
         {
@@ -56,6 +53,5 @@ namespace Assets.Scripts.Core
             foreach (var disposable in _disposables)
                 disposable.Dispose();
         }
-
     }
 }

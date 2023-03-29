@@ -1,13 +1,11 @@
+using Assets.Scripts.Core.Animation;
 using Assets.Scripts.Core.Movement.Controller;
 using Assets.Scripts.Core.Movement.Data;
-using Assets.Scripts.Player;
-using Assets.Scripts.Player.PlayerAnimation;
-using Core.Enums;
-using Core.Tools;
-using System;
+using Assets.Scripts.Core.Tools;
+using Assets.Scripts.StatsSystem;
 using UnityEngine;
 
-namespace Player
+namespace Assets.Scripts.Player
 {
 
     [RequireComponent(typeof(Rigidbody2D))]
@@ -17,23 +15,19 @@ namespace Player
         [SerializeField] private AnimatorController _animator;
         [SerializeField] private DirectionalMovementData _directionalMovementData;
         [SerializeField] private JumpData _jumpData;
-
-      
         [SerializeField] private DirectionalCameraPair _cameras;
 
         private Rigidbody2D _rigidbody;
-
-
         private DirectionalMover _directionalMover;
         private Jumper _jumper;
 
 
-        private void Start()
+        public void Initialize(IStatValueGiver statValueGiver)
         {
             _rigidbody = GetComponent<Rigidbody2D>();
      
-            _directionalMover = new DirectionalMover(_rigidbody, _directionalMovementData);
-            _jumper = new Jumper(_rigidbody, _jumpData, _directionalMovementData.MaxSize);
+            _directionalMover = new DirectionalMover(_rigidbody, _directionalMovementData, statValueGiver);
+            _jumper = new Jumper(_rigidbody, _jumpData, _directionalMovementData.MaxSize, statValueGiver);
          
         }
 
@@ -71,8 +65,6 @@ namespace Player
 
         public void Jump() => _jumper.Jump();
 
-
-      
         public void StartAttack()
         {
             if (!_animator.PlayAnimation(AnimationType.Attack, true))
@@ -81,10 +73,7 @@ namespace Player
             _animator.AnimationEnded += EndAttack;
             _animator.AnimationRequested += Attack;
         }
-        private void Attack()
-        {
-
-        }
+        private void Attack() { }
          private void EndAttack()
         {
             _animator.AnimationEnded -= EndAttack;
@@ -94,8 +83,5 @@ namespace Player
         public void LookUp() => _animator.PlayAnimation(AnimationType.LookUp, true);
         
         public void EndLookUp()=> _animator.PlayAnimation(AnimationType.LookUp, false);
-       
-
-
     }
 }

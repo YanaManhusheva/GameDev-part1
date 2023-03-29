@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Player.PlayerAnimation
+namespace Assets.Scripts.Core.Animation
 {
     public abstract class AnimatorController : MonoBehaviour
     {
@@ -16,16 +12,18 @@ namespace Assets.Scripts.Player.PlayerAnimation
         {
             if (!active)
             {
-                if (_currentAnimationType == AnimationType.Idle || _currentAnimationType != animationType)
+                if (_currentAnimationType == AnimationType.Idle || 
+                    _currentAnimationType != animationType)
                     return false;
+
                 _currentAnimationType = AnimationType.Idle;
                 PlayAnimation(_currentAnimationType);
                 return false;
 
             }
+
             if (_currentAnimationType >= animationType)
                 return false;
-
 
             _currentAnimationType = animationType;
             PlayAnimation(_currentAnimationType);

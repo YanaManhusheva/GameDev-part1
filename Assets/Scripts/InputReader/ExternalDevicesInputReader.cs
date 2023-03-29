@@ -1,15 +1,13 @@
-﻿using UnityEngine;
-using Player;
-using UnityEngine.EventSystems;
-using Assets.Scripts.Player;
-using Assets.Scripts.Core.Services.Updater;
+﻿using Assets.Scripts.Core.Services.Updater;
 using System;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.InputReader
 {
     public class ExternalDevicesInputReader : IEntityInputSource, IDisposable
     {
-       
         public float HorizontalDirection => Input.GetAxisRaw("Horizontal");
         public float VerticalDirection => Input.GetAxisRaw("Vertical");
 
@@ -20,22 +18,22 @@ namespace Assets.Scripts
         {
             ProjectUpdater.Instance.UpdateCalled += OnUpdate;
         }
-        public void ResetOneTimeAction()
+        public void ResetOneTimeActions()
         {
             Jump = false;
             Attack = false;
         }
+        public void Dispose() => ProjectUpdater.Instance.UpdateCalled -= OnUpdate;
 
         private void OnUpdate()
         {
             if (Input.GetButtonDown("Jump"))
                 Jump = true;
-            if (!isPointerOverUI() && Input.GetButtonDown("Fire1"))
+
+            if (!IsPointerOverUI() && Input.GetButtonDown("Fire1") && !Input.touches.Any())
                 Attack = true;
         }
 
-        public void Dispose() => ProjectUpdater.Instance.UpdateCalled -= OnUpdate;
-
-        private bool isPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
+        private bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core.Parallax
+namespace Assets.Scripts.Core.Parallax
 {
     public class InfiniteParallaxLayer 
     {
@@ -50,7 +50,6 @@ namespace Core.Parallax
                 layerPosition.x += deltaMovement * _speed;
                 layer.position = layerPosition;
             }
-            
         }
 
         private void FixLayersPosition(float targetPosition)
@@ -72,8 +71,7 @@ namespace Core.Parallax
         }
 
         private bool IsLayerActive(Transform layer, float targetPosition) =>
-            Mathf.Abs(layer.position.x - targetPosition) <= _layerHorizontalSize / 2;
-        
+            Mathf.Abs(layer.position.x - targetPosition) <= _layerHorizontalSize / 1.5;
     }
 }
 
