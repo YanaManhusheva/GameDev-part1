@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Core.Parallax
+namespace Assets.Scripts.Core.Parallax
 {
     class InfiniteParallaxEffect : MonoBehaviour
     {
@@ -42,9 +39,6 @@ namespace Core.Parallax
         {
             [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
             [field: SerializeField] public float Speed { get; private set; }
-
-           
         }
     }
-
 }

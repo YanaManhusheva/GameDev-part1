@@ -1,11 +1,6 @@
-﻿
-using Cinemachine;
-using UnityEngine;
-
-
-namespace Core.Enums
+﻿namespace Assets.Scripts.Core.Enums
 {
-   public enum Direction{
+    public enum Direction{
         Right = 0,
         Left =1,
 

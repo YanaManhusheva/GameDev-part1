@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Player.PlayerAnimation
+namespace Assets.Scripts.Core.Animation
 {
-     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(Animator))]
     public class UnityAnimatorController : AnimatorController
     {
         private Animator _animator;
