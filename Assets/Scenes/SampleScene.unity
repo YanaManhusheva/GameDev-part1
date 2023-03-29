@@ -1763,18 +1763,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -453562347444798952, guid: dde2588f5e0bc7b4ab407c1ae99bd5c1, type: 3}
   m_PrefabInstance: {fileID: 1013561554}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &313279107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313279106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4bc38e0ed01ff84f93a2f1da7511312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &313279108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4385,7 +4373,7 @@ GameObject:
   - component: {fileID: 941896890}
   - component: {fileID: 941896891}
   m_Layer: 0
-  m_Name: Environment (1)
+  m_Name: Environment_main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8094,8 +8082,8 @@ MonoBehaviour:
     <Direction>k__BackingField: 0
     <MinSize>k__BackingField: 0.52
     <MaxSize>k__BackingField: 0.6
-    <MinVerticalPosition>k__BackingField: 0
-    <MaxVerticalPosition>k__BackingField: 0
+    <MinVerticalPosition>k__BackingField: -3.3
+    <MaxVerticalPosition>k__BackingField: -2.8
   _jumpData:
     <GravityScale>k__BackingField: 4
     <Shadow>k__BackingField: {fileID: 1885991598}
@@ -8104,18 +8092,6 @@ MonoBehaviour:
   _cameras:
     _rightCamera: {fileID: 650889646}
     _leftCamera: {fileID: 31772975}
---- !u!114 &1884133440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884133437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4bc38e0ed01ff84f93a2f1da7511312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1884133441
 Rigidbody2D:
   serializedVersion: 4
